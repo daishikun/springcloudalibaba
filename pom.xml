@@ -6,7 +6,12 @@
 
     <groupId>org.example</groupId>
     <artifactId>springcloudalibaba_parent</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>nacosclient</module>
+        <module>client2</module>
+    </modules>
 
 
     <!--继承springboot父项目-->
@@ -16,11 +21,36 @@
         <version>2.2.5.RELEASE</version>
     </parent>
 
+    <!--自定义的properties属性-->
+    <properties>
+        <spring.cloud-version>Hoxton.SR6</spring.cloud-version>
+        <spring.cloud.alibaba-version>2.2.1.RELEASE</spring.cloud.alibaba-version>
+    </properties>
+
+
     <!--维护依赖-->
     <dependencyManagement>
-        <!--维护springcloud依赖-->
-        <!--维护springcloudalibaba依赖-->
+        <dependencies>
+            <!--维护springcloud依赖-->
+            <!--springcloud版本版本依赖-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
+            <!--维护springcloudalibaba依赖-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring.cloud.alibaba-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+
+            </dependency>
+        </dependencies>
     </dependencyManagement>
 
 
